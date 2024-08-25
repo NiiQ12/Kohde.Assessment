@@ -1,14 +1,21 @@
-﻿namespace Kohde.Assessment
-{
-    public class Dog
-    {
-        public string Name { get; set; }
-        public int Age { get; set; }
+﻿using System;
+
+namespace Kohde.Assessment {
+    public class Dog : Mammal, IDisposable {
         public string Food { get; set; }
 
-        public string GetDetails()
-        {
-            return "Name: " + Name + "Age: " + Age;
+        public Dog() { }
+
+        public Dog(string name, int age, string food) : base(name, age) {
+            Food = food;
+        }
+
+        public override string ToString() {
+            return $"{GetDetails()}, Food: {Food}";
+        }
+
+        public void Dispose() {
+            Console.WriteLine("Disposed of dog");
         }
     }
 }
